@@ -18,6 +18,7 @@ public class BookController {
 
     @GetMapping
     public List<Book> getAllBooks() {
+        // Fetch all books 
         return bookService.getAllBooks();
     }
 
@@ -28,10 +29,10 @@ public class BookController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/api/books")
+    @PostMapping
     public ResponseEntity<Book> createBook(@RequestBody Book book) {
         Book savedBook = bookService.saveBook(book);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedBook);
+        return new ResponseEntity<>(savedBook, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")

@@ -12,7 +12,11 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.Year;
+import java.util.Optional;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -39,10 +43,12 @@ public class BookControllerIntegrationTest {
         book.setGenre("Programming");
         book.setPublicationYear(Year.of(2002));
 
+        when(bookService.saveBook(any(Book.class))).thenReturn(book);
+
         mockMvc.perform(post("/api/books")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(book)))
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.title").value("Test Driven Development"))
                 .andExpect(jsonPath("$.author").value("Kent Beck"));
     }
@@ -56,7 +62,6 @@ public class BookControllerIntegrationTest {
 
     @Test
     void whenGetBookById_thenStatus200() throws Exception {
-        // First, create a book
         Book book = new Book();
         book.setTitle("Clean Code");
         book.setAuthor("Robert C. Martin");
@@ -64,15 +69,9 @@ public class BookControllerIntegrationTest {
         book.setGenre("Programming");
         book.setPublicationYear(Year.of(2008));
 
-        String createResult = mockMvc.perform(post("/api/books")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(book)))
-                .andReturn().getResponse().getContentAsString();
-        
-        Book createdBook = objectMapper.readValue(createResult, Book.class);
+        when(bookService.getBookById(anyLong())).thenReturn(Optional.of(book));
 
-        // Then, retrieve it by ID
-        mockMvc.perform(get("/api/books/{id}", createdBook.getId()))
+        mockMvc.perform(get("/api/books/{id}", 1L))  // Assuming 1L is the book ID
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.title").value("Clean Code"));
     }

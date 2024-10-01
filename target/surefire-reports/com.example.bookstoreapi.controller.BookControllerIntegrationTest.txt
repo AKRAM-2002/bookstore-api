@@ -1,14 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.example.bookstoreapi.controller.BookControllerIntegrationTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 15.627 s <<< FAILURE! - in com.example.bookstoreapi.controller.BookControllerIntegrationTest
-whenGetBookById_thenStatus200  Time elapsed: 0.537 s  <<< ERROR!
-com.fasterxml.jackson.databind.exc.MismatchedInputException: 
-No content to map due to end-of-input
- at [Source: (String)""; line: 1, column: 0]
-	at com.example.bookstoreapi.controller.BookControllerIntegrationTest.whenGetBookById_thenStatus200(BookControllerIntegrationTest.java:72)
-
-whenCreateBook_thenStatus201  Time elapsed: 0.29 s  <<< FAILURE!
-java.lang.AssertionError: Status expected:<200> but was:<405>
-	at com.example.bookstoreapi.controller.BookControllerIntegrationTest.whenCreateBook_thenStatus201(BookControllerIntegrationTest.java:45)
-
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.519 s - in com.example.bookstoreapi.controller.BookControllerIntegrationTest
