@@ -12,7 +12,7 @@
     <artifactId>bookstore-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>bookstore-api</name>
-    <description>Bookstore API for portfolio project</description>
+    <description>Bookstore API</description>
     
     <properties>
         <java.version>11</java.version>
@@ -46,22 +46,19 @@
             <artifactId>springfox-boot-starter</artifactId>
             <version>3.0.0</version>
         </dependency>
-        <!-- Spring Boot Starter Test -->
+        
+        <!-- Test dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-        <!-- JUnit Jupiter API -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
-        
-        <!-- JUnit Jupiter Engine -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
@@ -69,25 +66,35 @@
             <scope>test</scope>
         </dependency>
         
-        <!-- Mockito Core -->
+        <!-- Mockito dependencies -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>4.5.1</version>
             <scope>test</scope>
         </dependency>
-        
-        <!-- Mockito JUnit Jupiter -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
             <version>4.5.1</version>
             <scope>test</scope>
         </dependency>
-
-
+        
+        <!-- ByteBuddy dependencies -->
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>1.12.10</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy-agent</artifactId>
+            <version>1.12.10</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
-
+    
     <build>
         <plugins>
             <plugin>

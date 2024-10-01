@@ -3,6 +3,7 @@ package com.example.bookstoreapi.controller;
 import com.example.bookstoreapi.model.Book;
 import com.example.bookstoreapi.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,9 +28,10 @@ public class BookController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
-    public Book createBook(@RequestBody Book book) {
-        return bookService.saveBook(book);
+    @PostMapping("/api/books")
+    public ResponseEntity<Book> createBook(@RequestBody Book book) {
+        Book savedBook = bookService.saveBook(book);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedBook);
     }
 
     @PutMapping("/{id}")
