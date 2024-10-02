@@ -1,6 +1,6 @@
 # bookstore-api
 
-
+![alt text](Architecture.png)
 
 
 
