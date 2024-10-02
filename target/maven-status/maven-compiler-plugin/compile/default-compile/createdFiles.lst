@@ -1,6 +1,0 @@
-com\example\bookstoreapi\controller\BookController.class
-com\example\bookstoreapi\BookstoreApiApplication.class
-com\example\bookstoreapi\service\BookService.class
-com\example\bookstoreapi\model\Book.class
-com\example\bookstoreapi\config\SecurityConfig.class
-com\example\bookstoreapi\repository\BookRepository.class
